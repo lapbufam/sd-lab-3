@@ -1,9 +1,12 @@
+// Daniel Lopes Zordan Filho
+// Leonardo Picanço
 package com.example.worldcountries.Dao;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+// Classe SQLHelper
 public class SQLHelper extends SQLiteOpenHelper {
 
   private static final String NOME_BANCO = "dbPais";
@@ -17,7 +20,7 @@ public class SQLHelper extends SQLiteOpenHelper {
   public static final String COLUNA_LONGITUDE = "longitude";
   public static final String COLUNA_LATITUDE = "servicos";
 
-
+  // Instanciando as tabelas e as colunas
   public SQLHelper(Context context) {
     super(context, NOME_BANCO, null, VERSAO_BANCO);
   }

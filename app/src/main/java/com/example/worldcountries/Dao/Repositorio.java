@@ -1,3 +1,5 @@
+// Daniel Lopes Zordan Filho
+// Leonardo Picanço
 package com.example.worldcountries.Dao;
 
 import android.content.ContentValues;
@@ -10,6 +12,7 @@ import com.example.worldcountries.Model.Pais;
 import java.util.ArrayList;
 import java.util.List;
 
+// Classe repositorio
 public class Repositorio {
 
   private SQLHelper helper;
@@ -18,7 +21,7 @@ public class Repositorio {
   public Repositorio(Context ctx){
     helper = new SQLHelper(ctx);
   }
-
+  // Insere no repositorio
   public long inserir(Pais pais){
     db = helper.getReadableDatabase();
     ContentValues cv = new ContentValues();
@@ -36,13 +39,15 @@ public class Repositorio {
     db.close();
     return id;
   }
-
+  
+  // Limpa repositorio
   public void excluirAll(){
     db = helper.getWritableDatabase();
     db.delete(SQLHelper.TABELA_PAIS, null, null);
     db.close();
   }
-
+  
+  // Seleciona no repositorio
   public List<Pais> listarPais() {
     String sql = "SELECT * FROM " + SQLHelper.TABELA_PAIS;
     db = helper.getReadableDatabase();

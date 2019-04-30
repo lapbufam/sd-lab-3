@@ -1,3 +1,5 @@
+// Daniel Lopes Zordan Filho
+// Leonardo Picanço
 package com.example.worldcountries.Util;
 
 import com.example.worldcountries.Model.Pais;
@@ -9,6 +11,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.GET;
 
+// Classe HttpRetro
 public class HttpRetro {
   private static final String BASE_URL = "https://restcountries.eu/";
 
