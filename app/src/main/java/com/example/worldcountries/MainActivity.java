@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
   private SwipeRefreshLayout swiperefresh;
 
   @Override
+  // Instancia as listas e paises, seta cores, cria um novo repositorio e povoa ele
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
@@ -52,12 +53,14 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
     listView.setAdapter(adapter);
     listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
       @Override
+      // Amplia e mostra a descrição do item clicado
       public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Toast.makeText(getApplication(), listaPais.get(position).toString(), Toast.LENGTH_LONG).show();
       }
     });
   }
-
+  
+  // Recupera os dados
   private void getDataRetro() {
 
     swiperefresh.setRefreshing(true);
@@ -66,6 +69,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
     if (isConnected()) {
 
       HttpRetro.getPaisClient().getPais().enqueue(new Callback<List<Pais>>() {
+        // Trata a resposta 
         public void onResponse(Call<List<Pais>> call, Response<List<Pais>> response) {
           if (response.isSuccessful()) {
             List<Pais> paisBody = response.body();
@@ -84,6 +88,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         }
 
         @Override
+        // Trata o erro
         public void onFailure(Call<List<Pais>> call, Throwable t) {
           t.printStackTrace();
         }
@@ -94,13 +99,14 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
       getDataSqlite();
     }
   }
-
+  // Recupera os dados do banco
   private void getDataSqlite() {
     listaPais.clear();
     listaPais.addAll(db.listarPais());
     adapter.notifyDataSetChanged();
   }
-
+  
+  // Verifica conexão com o banco
   public Boolean isConnected() {
     ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
 
@@ -112,6 +118,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
   }
 
   @Override
+  // Atualiza os dados
   public void onRefresh() {
     getDataRetro();
   }
