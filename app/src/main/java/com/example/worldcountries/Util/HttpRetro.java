@@ -1,3 +1,5 @@
+// Daniel Lopes Zordan Filho
+// Leonardo Picanço
 package com.example.worldcountries.Util;
 
 import com.example.worldcountries.Model.Pais;
