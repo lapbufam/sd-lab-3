@@ -9,6 +9,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.GET;
 
+// Classe HttpRetro
 public class HttpRetro {
   private static final String BASE_URL = "https://restcountries.eu/";
 
