@@ -29,24 +29,56 @@ public class Pais implements Serializable {
 
   @SerializedName("latlng")
   private ArrayList<Double> latlng;
-  
+
+  @SerializedName("latitude")
+  private double latitude;
+
+  @SerializedName("longitude")
+  private double longitude;
+
   // Construtor da classe Pais possui os parâmetros: id, nome, region, subregion e population
-  public Pais(long id, String name, String region, String subregion, int population) {
+  public Pais(long id, String name, String region, String subregion, int population, double latitude, double longitude) {
 
     this.id = id;
     this.name = name;
     this.region = region;
     this.subregion = subregion;
     this.population = population;
+    this.latitude = latitude;
+    this.longitude = longitude;
 
   }
 
   @Override
   // Retorna uma string com a descricao em coordenadas do pais
   public String toString() {
-    return this.getName() + "\nLatitude: " + this.getLatlng().get(0) + "\nLongitude: " + this.getLatlng().get(1) ;
+    if (this.getLatlng() == null) {
+      Log.d("lat", String.valueOf(this.getLatitude()));
+      Log.d("long", String.valueOf(this.getLongitude()));
+      return this.getName() + "\nLatitude: " + this.getLatitude() + "\nLongitude: " + this.getLongitude();
+    } else {
+      Log.d("Size:", Integer.toString(this.getLatlng().size()));
+      return this.getName() + "\nLatitude: " + this.getLatlng().get(0) + "\nLongitude: " + this.getLatlng().get(1);
+    }
+
   }
-  
+
+  public double getLatitude() {
+    return latitude;
+  }
+
+  public void setLatitude(double latitude) {
+    this.latitude = latitude;
+  }
+
+  public double getLongitude() {
+    return longitude;
+  }
+
+  public void setLongitude(double longitude) {
+    this.longitude = longitude;
+  }
+
   // Retorna o id do pais
   public long getId() {
     return id;

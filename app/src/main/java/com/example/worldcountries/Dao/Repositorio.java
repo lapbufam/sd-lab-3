@@ -29,7 +29,8 @@ public class Repositorio {
     cv.put(SQLHelper.COLUNA_REGIAO, pais.getRegion());
     cv.put(SQLHelper.COLUNA_SUBREGIAO, pais.getSubregion());
     cv.put(SQLHelper.COLUNA_POPULACAO, pais.getPopulation());
-
+    cv.put(SQLHelper.COLUNA_LATITUDE, pais.getLatlng().size() != 0 ? pais.getLatlng().get(0) : 0.0);
+    cv.put(SQLHelper.COLUNA_LONGITUDE, pais.getLatlng().size() != 0 ? pais.getLatlng().get(1) : 0.0);
 
     long id = db.insert(SQLHelper.TABELA_PAIS, null, cv);
 
@@ -77,7 +78,7 @@ public class Repositorio {
               cursor.getColumnIndex(SQLHelper.COLUNA_POPULACAO)
       );
 
-      Pais pais = new Pais(id, nome, regiao, subregiao, populacao);
+      Pais pais = new Pais(id, nome, regiao, subregiao, populacao, latitude, longitude);
       list.add(pais);
     }
     cursor.close();
