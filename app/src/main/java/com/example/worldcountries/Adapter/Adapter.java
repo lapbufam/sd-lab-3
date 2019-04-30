@@ -12,12 +12,14 @@ import com.example.worldcountries.R;
 
 import java.util.List;
 
+// Classe Adapter
 public class Adapter extends ArrayAdapter<Pais> {
   public Adapter(Context context, List<Pais> objects) {
     super(context, 0, objects);
   }
 
   @Override
+  // Retorna a View do pais indicado pelo atributo position
   public View getView(int position, View convertView, ViewGroup parent) {
     Pais pais = getItem(position);
 
