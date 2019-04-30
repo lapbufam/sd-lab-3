@@ -1,3 +1,5 @@
+// Daniel Lopes Zordan Filho
+// Leonardo Picanço
 package com.example.worldcountries;
 
 import android.content.Context;
